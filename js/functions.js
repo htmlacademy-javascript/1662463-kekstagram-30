@@ -1,5 +1,5 @@
 //Функция для проверки длины строки
-
+/*
 const validateForm = (string, maxLength) => (string.length <= maxLength);
 
 console.log(validateForm('проверяемая строка', 20));
@@ -68,3 +68,4 @@ console.log (getNumberByRegExp('а я томат'));
 console.log (getNumberByRegExp(2023));
 console.log (getNumberByRegExp(-1));
 console.log (getNumberByRegExp(1.5));
+*/

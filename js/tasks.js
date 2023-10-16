@@ -1,4 +1,4 @@
-const users = [
+/*const users = [
   {
     id: 1,
     name: 'Aurora',
@@ -81,3 +81,4 @@ const renderEmptyRectangle = (rows, cells) => {
 };
 
 console.log(renderEmptyRectangle(5, 10));
+*/
