@@ -44,7 +44,6 @@ const MAX_LIKES = 200;
 const MIN_COMMENTS = 0;
 const MAX_COMMENTS = 30;
 const COMMENTS_COUNT = 999;
-const AVATAR_COUNT = 6;
 const MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -71,21 +70,33 @@ const getUniqueRandomInteger = (a, b) => {
   return function () {
     let flag = true;
     let randomInteger;
+    if (arr.length >= (b - a + 1)) { //важное условие прекращения цикла
+      console.error(`Перебраны все числа из диапазона от ${b} до ${a}`);
+      return null;
+    }
     while (flag) {
       randomInteger = getRandomInteger(a, b);
       if (!arr.includes(randomInteger)) {
         arr.push(randomInteger);
         flag = false;
-        return randomInteger;
       }
     }
+    return randomInteger;
   };
 };
 
 const getPhotoId = getUniqueRandomInteger(1, PHOTOS_COUNT);
 const getImageId = getUniqueRandomInteger(1, PHOTOS_COUNT);
 const getCommentId = getUniqueRandomInteger(0, COMMENTS_COUNT);
-const getAvatarId = getUniqueRandomInteger(0, AVATAR_COUNT);
+
+const getComment = () => ({
+  id: getCommentId(),
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+  message: MESSAGES[getRandomInteger(0, MESSAGES.length)],
+  name: NAMES[getRandomInteger(0, NAMES.length)],
+});
+
+const getComments = (n) => Array.from({ length: n }, getComment);
 
 const getPhoto = () => ({
   id: getPhotoId(),
@@ -97,14 +108,4 @@ const getPhoto = () => ({
 
 const getPhotos = (n) => Array.from({ length: n }, getPhoto);
 
-const getComment = () => ({
-  id: getCommentId(),
-  // avatar: `img/${getAvatarId()}.svg`, ВИСНЕТ БРАУЗЕР
-  message: MESSAGES[getRandomInteger(0, MESSAGES.length)],
-  name: NAMES[getRandomInteger(0, NAMES.length)],
-});
-
-const getComments = (n) => Array.from({ length: n }, getComment);
-
 console.log(getPhotos(PHOTOS_COUNT));
-
