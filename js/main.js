@@ -71,7 +71,7 @@ const getUniqueRandomInteger = (a, b) => {
     let flag = true;
     let randomInteger;
     if (arr.length >= (b - a + 1)) { //важное условие прекращения цикла
-      console.error(`Перебраны все числа из диапазона от ${b} до ${a}`);
+      // console.error(`Перебраны все числа из диапазона от ${b} до ${a}`);
       return null;
     }
     while (flag) {
@@ -108,4 +108,4 @@ const getPhoto = () => ({
 
 const getPhotos = (n) => Array.from({ length: n }, getPhoto);
 
-console.log(getPhotos(PHOTOS_COUNT));
+// console.log(getPhotos(PHOTOS_COUNT));
