@@ -44,6 +44,7 @@ const MAX_LIKES = 200;
 const MIN_COMMENTS = 0;
 const MAX_COMMENTS = 30;
 const COMMENTS_COUNT = 999;
+const AVATAR_COUNT = 6;
 const MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -91,7 +92,7 @@ const getCommentId = getUniqueRandomInteger(0, COMMENTS_COUNT);
 
 const getComment = () => ({
   id: getCommentId(),
-  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+  avatar: `img/avatar-${getRandomInteger(1, AVATAR_COUNT)}.svg`,
   message: MESSAGES[getRandomInteger(0, MESSAGES.length)],
   name: NAMES[getRandomInteger(0, NAMES.length)],
 });
@@ -108,4 +109,4 @@ const getPhoto = () => ({
 
 const getPhotos = (n) => Array.from({ length: n }, getPhoto);
 
-// console.log(getPhotos(PHOTOS_COUNT));
+console.log(getPhotos(PHOTOS_COUNT));
