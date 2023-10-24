@@ -18,8 +18,8 @@ const getCommentId = getUniqueRandomInteger(0, COMMENTS_COUNT);
 const getComment = () => ({
   id: getCommentId(),
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-  message: MESSAGES[getRandomInteger(0, MESSAGES.length)],
-  name: NAMES[getRandomInteger(0, NAMES.length)],
+  message: MESSAGES[getRandomInteger(0, MESSAGES.length - 1)],
+  name: NAMES[getRandomInteger(0, NAMES.length - 1)],
 });
 
 const getComments = (n) => Array.from({ length: n }, getComment);
