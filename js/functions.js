@@ -69,3 +69,24 @@ console.log (getNumberByRegExp(2023));
 console.log (getNumberByRegExp(-1));
 console.log (getNumberByRegExp(1.5));
 */
+
+//Функция, которая принимает время начала и конца рабочего дня, время старта и продолжительность встречи в минутах
+
+const workTime = (startWork, endWork, startMeeting, meetingTime) => {
+// создаём массив из часов и минут
+  const startWorkArray = startWork.split(':');
+  const endWorkArray = endWork.split(':');
+  const startMeetingArray = startMeeting.split(':');
+// получаем время в минутах
+  const startWorkInMinutes = Number(startWorkArray[0]) * 60 + Number(startWorkArray[1]);
+  const endWorkInMinutes = Number(endWorkArray[0]) * 60 + Number(endWorkArray[1]);
+  const startMeetingInMinutes = Number(startMeetingArray[0]) * 60 + Number(startMeetingArray[1]);
+
+  return startWorkInMinutes <= startMeetingInMinutes && startMeetingInMinutes <= endWorkInMinutes && startWorkInMinutes <= (startMeetingInMinutes + meetingTime) && (startMeetingInMinutes + meetingTime) <= endWorkInMinutes
+};
+
+console.log(workTime('08:00', '17:30', '14:00', 90)); // true
+console.log(workTime('8:0', '10:0', '8:0', 120));     // true
+console.log(workTime('08:00', '14:30', '14:00', 90)); // false
+console.log(workTime('14:00', '17:30', '08:0', 90));  // false
+console.log(workTime('8:00', '17:30', '08:00', 900)); // false
