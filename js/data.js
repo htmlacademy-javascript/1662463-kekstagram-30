@@ -27,7 +27,7 @@ const getComments = (n) => Array.from({ length: n }, getComment);
 const getPhoto = () => ({
   id: getPhotoId(),
   url: `photos/${getImageId()}.jpg`,
-  description: DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS.length)],
+  description: DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS.length - 1)],
   likes: getRandomInteger(MIN_LIKES, MAX_LIKES),
   comments: getComments(getRandomInteger(MIN_COMMENTS, MAX_COMMENTS)),
 });
