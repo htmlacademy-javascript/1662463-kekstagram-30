@@ -5,8 +5,6 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
-export {getRandomInteger};
-
 const getUniqueRandomInteger = (a, b) => {
   const arr = [];
   return function () {
@@ -27,4 +25,4 @@ const getUniqueRandomInteger = (a, b) => {
   };
 };
 
-export {getUniqueRandomInteger};
+export {getRandomInteger, getUniqueRandomInteger};
