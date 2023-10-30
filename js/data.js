@@ -1,4 +1,4 @@
-import {getRandomInteger, getUniqueRandomInteger} from './util.js';
+import { getRandomInteger, getUniqueRandomInteger } from './util.js';
 import {
   PHOTOS_COUNT,
   DESCRIPTIONS,
@@ -34,4 +34,4 @@ const getPhoto = () => ({
 
 const getPhotos = (n) => Array.from({ length: n }, getPhoto);
 
-export {getPhotos};
+export { getPhotos };
