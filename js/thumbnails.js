@@ -1,20 +1,20 @@
 const picturesContainer = document.querySelector('.pictures');
 
-const userTemplate = document.querySelector('#pictire').content.querySelector('a');
+const pictureTemplate = document.querySelector('#pictire').content.querySelector('a');
 
-const anotherUsersFragment = document.createDocumentFragment();
+const picturesContainerFragment = document.createDocumentFragment();
 
-const anotherUsers = (getPhotos) => {
+const createThumbnails = (getPhotos) => {
   getPhotos.forEach(({ url, description, comments, likes }) => {
-    const userElement = userTemplate.cloneNode(true);
-    userElement.querySelector('.picture__img').src = url;
-    userElement.querySelector('.picture__img').alt = description;
-    userElement.querySelector('.picture__comments').textContent = comments.length;
-    userElement.querySelector('picture__likes').textContent = likes;
-    anotherUsersFragment.appendChild(userElement);
+    const pictireElement = pictureTemplate.cloneNode(true);
+    pictireElement.querySelector('.picture__img').src = url;
+    pictireElement.querySelector('.picture__img').alt = description;
+    pictireElement.querySelector('.picture__comments').textContent = comments.length;
+    pictireElement.querySelector('picture__likes').textContent = likes;
+    picturesContainerFragment.appendChild(pictireElement);
   });
 
-  picturesContainer.appendChild(anotherUsersFragment);
+  picturesContainer.appendChild(picturesContainerFragment);
 };
 
-export { anotherUsers };
+export { createThumbnails };
