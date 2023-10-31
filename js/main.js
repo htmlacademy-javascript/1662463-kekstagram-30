@@ -1,9 +1,8 @@
 import { getPhotos } from './data.js';
 import { createThumbnails } from './thumbnails.js';
 import { PHOTOS_COUNT } from './constans.js';
-import './thumbnails.js';
 
-// eslint-disable-next-line no-console
-console.log(getPhotos(PHOTOS_COUNT));
+const photos = getPhotos(PHOTOS_COUNT);
+console.log(photos);
 
-createThumbnails(getPhotos);
+createThumbnails(photos);
