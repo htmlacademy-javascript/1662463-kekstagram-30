@@ -7,7 +7,7 @@ const getRandomInteger = (a, b) => {
 
 const getUniqueRandomInteger = (a, b) => {
   const arr = [];
-  return function () {
+  return () => {
     let flag = true;
     let randomInteger;
     if (arr.length >= (b - a + 1)) { //важное условие прекращения цикла
