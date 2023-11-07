@@ -2,10 +2,18 @@ const modal = document.querySelector('.big-picture');
 const closeModalButton = modal.querySelector('.big-picture__cancel');
 
 
+const renderPicture = ({ url, description, likes }) => {
+  modal.querySelector('.big-picture__img img').src = url;
+  modal.querySelector('.big-picture__img img').alt = description;
+  modal.querySelector('.likes-count').textContent = likes;
+  modal.querySelector('.social__caption').textContent = description;
+};
+
 const showModal = () => {
   modal.classList.remove('hidden');
   document.body.classList.add('modal-open');
-  document.addEventListener('keydown', onModalEscKeydown);
+
+  renderPicture();
 };
 
 const hideModal = () => {
@@ -24,11 +32,6 @@ const onModalEscKeydown = (evt) => {
     hideModal();
   }
 };
-
-
-
-
-
 
 export { showModal };
 
