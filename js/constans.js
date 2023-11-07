@@ -25,3 +25,5 @@ export const NAMES = [
   'Роберт',
   'Роксана',
 ];
+
+export const COMMENTS_SHOWN = 5;
