@@ -1,9 +1,11 @@
-import { getPhotos } from "./data.js";
-import { showModal } from "./modal.js";
+import { getPhotos } from './data.js';
+import { showModal } from './modal.js';
 
 const picturesContainer = document.querySelector('.pictures');
 
-const pictureTemplate = document.querySelector('#picture').content.querySelector('a');
+const pictureTemplate = document
+  .querySelector('#picture')
+  .content.querySelector('a');
 
 const picturesFragment = document.createDocumentFragment();
 
@@ -26,7 +28,7 @@ const renderGallery = (getPhotos) => {
   picturesContainer.addEventListener('click', (evt) => {
     const thumbnail = evt.target.closest('[data-thumbnail-id]');
 
-    if (! thumbnail) {
+    if (!thumbnail) {
       return;
     }
     evt.preventDefault();

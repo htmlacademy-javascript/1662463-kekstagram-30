@@ -1,3 +1,5 @@
+import { renderComments, hideCommentCount } from './comments.js';
+
 const modal = document.querySelector('.big-picture');
 const closeModalButton = modal.querySelector('.big-picture__cancel');
 
@@ -14,6 +16,8 @@ const showModal = (photoData) => {
   document.body.classList.add('modal-open');
 
   renderPicture(photoData);
+  renderComments(photoData.comments);
+  hideCommentCount();
 };
 
 const hideModal = () => {
