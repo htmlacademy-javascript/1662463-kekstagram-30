@@ -9,11 +9,11 @@ const renderPicture = ({ url, description, likes }) => {
   modal.querySelector('.social__caption').textContent = description;
 };
 
-const showModal = () => {
+const showModal = (photoData) => {
   modal.classList.remove('hidden');
   document.body.classList.add('modal-open');
 
-  renderPicture();
+  renderPicture(photoData);
 };
 
 const hideModal = () => {
