@@ -27,3 +27,12 @@ export const NAMES = [
 ];
 
 export const COMMENTS_SHOWN = 5;
+
+export const MAX_HASHTAGS_COUNT = 5;
+export const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+export const ERROR_TEXT = {
+  INVALID_COUNT: `Максимум ${MAX_HASHTAGS_COUNT} хэштегов`,
+  NOT_UNIQUE: 'Хэштеги должны быть уникальными',
+  INVALID_PATTERN: 'Неправильный хэштег',
+};
+
