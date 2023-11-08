@@ -36,3 +36,16 @@ export const ERROR_TEXT = {
   INVALID_PATTERN: 'Неправильный хэштег',
 };
 
+export const EFFECT = {
+  DEFAULT: 'none',
+  CHROME: 'chrome',
+  SEPIA: 'sepia',
+  MARVIN: 'marvin',
+  PHOBOS: 'phobos',
+  HEAT: 'heat',
+};
+
+export const SCALE_STEP = 25;
+export const MIN_SCALE = 25;
+export const MAX_SCALE = 100;
+export const DEFAULT_SCALE = 100;
