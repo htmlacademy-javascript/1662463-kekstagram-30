@@ -26,6 +26,16 @@ const createSlider = ({ min, max, step }) => {
     }
   });
   slider.noUiSlider.on('update', () => {
-    effectLevel.value = slider.noUiSlider.get();
+    effectLevel.value = slider.noUiSlider.get(); //актуальное значение слайдера
+  });
+};
+
+// Обновление слайдера
+
+const updateSlider = ({ min, max, step }) => {
+  slider.noUiSlider.updateOptions({
+    range: { min, max },
+    step,
+    start: max,
   });
 };
