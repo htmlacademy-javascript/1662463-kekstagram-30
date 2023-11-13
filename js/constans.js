@@ -71,6 +71,10 @@ export const EFFECT_TO_FILTER = {
     style: 'brightness',
     unit: '',
   },
+  [EFFECT.DEFAULT]: {
+    style: '',
+    unit: '',
+  },
 };
 
 export const EFFECT_TO_SLIDER_OPTIONS = {
