@@ -1,4 +1,6 @@
-import { MAX_HASHTAGS_COUNT, VALID_SYMBOLS, ERROR_TEXT } from "./constans.js";
+import { MAX_HASHTAGS_COUNT, VALID_SYMBOLS, ERROR_TEXT } from './constans.js';
+import { resetScale } from './scale.js';
+import {resetEffects} from './effects.js';
 
 const imgForm = document.querySelector('.img-upload__form');
 const overlay = imgForm.querySelector('.img-upload__overlay');
@@ -6,6 +8,7 @@ const cancelButton = imgForm.querySelector('.img-upload__cancel');
 const fileField = imgForm.querySelector('.img-upload__input');
 const hashTagField = imgForm.querySelector('.text__hashtags');
 const commentField = imgForm.querySelector('.text__description');
+
 
 
 const pristine = new Pristine(imgForm, {
@@ -23,11 +26,13 @@ const showForm = () => {
   overlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
+  resetEffects();
 };
 
 //close form
 const hideForm = () => {
   imgForm.reset();
+  resetScale();
   pristine.reset();
   overlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
@@ -70,7 +75,7 @@ const onFileInputChange = () => {
   showForm();
 };
 
-const onImgFormSubmit = () => {
+const onImgFormSubmit = (evt) => {
   evt.preventDefault();
   pristine.validate();
 };
