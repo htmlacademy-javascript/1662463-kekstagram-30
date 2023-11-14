@@ -1,6 +1,6 @@
 import { MAX_HASHTAGS_COUNT, VALID_SYMBOLS, ERROR_TEXT } from './constans.js';
 import { resetScale } from './scale.js';
-import {resetEffects} from './effects.js';
+import { resetEffects } from './effects.js';
 
 const imgForm = document.querySelector('.img-upload__form');
 const overlay = imgForm.querySelector('.img-upload__overlay');
@@ -8,7 +8,6 @@ const cancelButton = imgForm.querySelector('.img-upload__cancel');
 const fileField = imgForm.querySelector('.img-upload__input');
 const hashTagField = imgForm.querySelector('.text__hashtags');
 const commentField = imgForm.querySelector('.text__description');
-
 
 
 const pristine = new Pristine(imgForm, {
@@ -41,10 +40,10 @@ const hideForm = () => {
 
 
 // Фокус в поле ввода
-const isTextFieldFocused = () => {
+const isTextFieldFocused = () =>
   document.activeElement === hashTagField ||
-    document.activeElement === commentField;
-};
+  document.activeElement === commentField;
+
 
 const normilizeTags = (tagString) => tagString
   .trim() //удаляет пробелы в начале и конце строки

@@ -45,32 +45,31 @@ createSlider({ min: 0, max: 100, step: 1 });
 
 const resetImage = () => {
   imgPreview.style = '';
-}
+};
 
 const showSlider = () => {
   sliderWrapper.classList.remove('hidden');
-}
+};
 
 const hideSlider = () => {
   sliderWrapper.classList.add('hidden');
-}
+};
 
 const setDefaultEffect = () => {
   hideSlider();
   resetImage();
-}
+};
 
 const checkDefaultRadio = () => {
   defaultRadio.checked = true;
-}
+};
 
 const resetEffects = () => {
   setDefaultEffect();
   checkDefaultRadio();
-}
+};
 
 effectsContainerElement.addEventListener('change', (evt) => {
-  console.log(evt.target)
   if (isDefault(evt.target.value)) {
     setDefaultEffect();
   } else {
