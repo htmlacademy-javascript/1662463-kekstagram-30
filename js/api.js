@@ -24,7 +24,7 @@ const request = async (url, method = HttpsMethod, body = null) => {
 
 const getData = async () => {
   return request(SERVER_URL, HttpsMethod.GET);
-}
+};
 
 //Функция отправки данных
 const sendData = async (photos) => {

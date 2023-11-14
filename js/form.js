@@ -1,6 +1,7 @@
 import { MAX_HASHTAGS_COUNT, VALID_SYMBOLS, ERROR_TEXT } from './constans.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
+import { sendData } from './api.js';
 
 const imgForm = document.querySelector('.img-upload__form');
 const overlay = imgForm.querySelector('.img-upload__overlay');
@@ -74,9 +75,30 @@ const onFileInputChange = () => {
   showForm();
 };
 
+// Функция отправки формы
+
+//не работает
+// const sendForm = async (formElement) => {
+//   if (pristine.validate()) {
+//     await sendData(new FormData(formElement));
+//   }
+// };
+
 const onImgFormSubmit = (evt) => {
   evt.preventDefault();
   pristine.validate();
+
+  if (pristine.validate()) {
+    const formData = new FormData(evt.target);
+
+    fetch('https://30.javascript.pages.academy/kekstagram/',
+      {
+        method: 'POST',
+        body: formData,
+      }
+    );
+  }
+  // sendForm(evt.target);
 };
 
 //validate hashTags
