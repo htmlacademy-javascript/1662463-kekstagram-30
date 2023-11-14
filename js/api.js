@@ -1,4 +1,4 @@
-const SERVER_URL = 'https://30.javascript.pages.academy/kekstagra1m/data';
+const SERVER_URL = 'https://30.javascript.pages.academy/kekstagram/data';
 
 const HttpsMethod = {
   GET: 'GET',
