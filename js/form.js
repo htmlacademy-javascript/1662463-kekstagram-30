@@ -1,6 +1,8 @@
 import { MAX_HASHTAGS_COUNT, VALID_SYMBOLS, ERROR_TEXT } from './constans.js';
 import { resetScale } from './scale.js';
-import {resetEffects} from './effects.js';
+import { resetEffects } from './effects.js';
+import { sendData } from './api.js';
+import { openErrorMessage, openSuccessMessage } from './messages.js';
 
 const imgForm = document.querySelector('.img-upload__form');
 const overlay = imgForm.querySelector('.img-upload__overlay');
@@ -8,8 +10,12 @@ const cancelButton = imgForm.querySelector('.img-upload__cancel');
 const fileField = imgForm.querySelector('.img-upload__input');
 const hashTagField = imgForm.querySelector('.text__hashtags');
 const commentField = imgForm.querySelector('.text__description');
+const submitButton = imgForm.querySelector('.img-upload__submit');
 
-
+const submitButtonText = {
+  POSTING: 'Публикую',
+  IDLE: 'Опубликовать',
+};
 
 const pristine = new Pristine(imgForm, {
   // class of the parent element where the error/success class is added
@@ -41,10 +47,10 @@ const hideForm = () => {
 
 
 // Фокус в поле ввода
-const isTextFieldFocused = () => {
+const isTextFieldFocused = () =>
   document.activeElement === hashTagField ||
-    document.activeElement === commentField;
-};
+  document.activeElement === commentField;
+
 
 const normilizeTags = (tagString) => tagString
   .trim() //удаляет пробелы в начале и конце строки
@@ -75,10 +81,52 @@ const onFileInputChange = () => {
   showForm();
 };
 
+// Функция переключения кнопки отправки формы
+
+const changeSubmitButton = (isBlocked) => {
+  submitButton.disabled = isBlocked;
+  if (isBlocked) {
+    submitButton.textContent = submitButtonText.POSTING;
+  } else {
+    submitButton.textContent = submitButtonText.IDLE;
+  }
+};
+
+// Функция отправки формы
+
+const sendForm = async (formElement) => {
+  if (!pristine.validate()) {
+    return;
+  }
+  try {
+    changeSubmitButton(true);
+    await sendData(new FormData(formElement));
+    changeSubmitButton(false);
+    hideForm();
+    openSuccessMessage();
+  } catch {
+    openErrorMessage();
+    changeSubmitButton(false);
+  }
+};
+
 const onImgFormSubmit = (evt) => {
   evt.preventDefault();
   pristine.validate();
+  sendForm(evt.target);
 };
+// if (pristine.validate()) {
+//   const formData = new FormData(evt.target);
+
+// fetch('https://30.javascript.pages.academy/kekstagram/',
+//   {
+//     method: 'POST',
+//     body: formData,
+//   }
+// );
+
+
+// };
 
 //validate hashTags
 
