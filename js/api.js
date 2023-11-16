@@ -1,4 +1,9 @@
-const SERVER_URL = 'https://30.javascript.pages.academy/kekstagram/data';
+const BASE_URL = 'https://30.javascript.pages.academy/kekstagram';
+
+const Route = {
+  GET_DATA: '/data',
+  SEND_DATA: '/',
+};
 
 const HttpsMethod = {
   GET: 'GET',
@@ -23,12 +28,12 @@ const request = async (url, method = HttpsMethod, body = null) => {
 //Функция получения данных
 
 const getData = async () => {
-  return request(SERVER_URL, HttpsMethod.GET);
+  return request(BASE_URL + Route.GET_DATA, HttpsMethod.GET);
 };
 
 //Функция отправки данных
 const sendData = async (photos) => {
-  return request(SERVER_URL, HttpsMethod.POST, photos);
+  return request(BASE_URL + Route.SEND_DATA, HttpsMethod.POST, photos);
 };
 
 export { getData, sendData };

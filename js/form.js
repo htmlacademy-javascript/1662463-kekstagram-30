@@ -9,7 +9,12 @@ const cancelButton = imgForm.querySelector('.img-upload__cancel');
 const fileField = imgForm.querySelector('.img-upload__input');
 const hashTagField = imgForm.querySelector('.text__hashtags');
 const commentField = imgForm.querySelector('.text__description');
+const submitButton = imgForm.querySelector('.img-upload__submit');
 
+const submitButtonText = {
+  POSTING: 'Публикую',
+  IDLE: 'Опубликовать',
+};
 
 const pristine = new Pristine(imgForm, {
   // class of the parent element where the error/success class is added
@@ -75,31 +80,45 @@ const onFileInputChange = () => {
   showForm();
 };
 
+// Функция переключения кнопки отправки формы
+
+const changeSubmitButton = (isBlocked) => {
+  submitButton.disabled = isBlocked;
+  if (isBlocked) {
+    submitButton.textContent = submitButtonText.POSTING;
+  } else {
+    submitButton.textContent = submitButtonText.IDLE;
+  }
+};
+
 // Функция отправки формы
 
-//не работает
-// const sendForm = async (formElement) => {
-//   if (pristine.validate()) {
-//     await sendData(new FormData(formElement));
-//   }
-// };
+const sendForm = async (formElement) => {
+  if (pristine.validate()) {
+    changeSubmitButton(true);
+    await sendData(new FormData(formElement));
+    changeSubmitButton(false);
+    hideForm();
+  }
+};
 
 const onImgFormSubmit = (evt) => {
   evt.preventDefault();
   pristine.validate();
-
-  if (pristine.validate()) {
-    const formData = new FormData(evt.target);
-
-    fetch('https://30.javascript.pages.academy/kekstagram/',
-      {
-        method: 'POST',
-        body: formData,
-      }
-    );
-  }
-  // sendForm(evt.target);
+  sendForm(evt.target);
 };
+// if (pristine.validate()) {
+//   const formData = new FormData(evt.target);
+
+// fetch('https://30.javascript.pages.academy/kekstagram/',
+//   {
+//     method: 'POST',
+//     body: formData,
+//   }
+// );
+
+
+// };
 
 //validate hashTags
 
