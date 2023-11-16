@@ -2,6 +2,7 @@ import { MAX_HASHTAGS_COUNT, VALID_SYMBOLS, ERROR_TEXT } from './constans.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
 import { sendData } from './api.js';
+import { openErrorMessage, openSuccessMessage } from './messages.js';
 
 const imgForm = document.querySelector('.img-upload__form');
 const overlay = imgForm.querySelector('.img-upload__overlay');
@@ -94,11 +95,18 @@ const changeSubmitButton = (isBlocked) => {
 // Функция отправки формы
 
 const sendForm = async (formElement) => {
-  if (pristine.validate()) {
+  if (!pristine.validate()) {
+    return;
+  }
+  try {
     changeSubmitButton(true);
     await sendData(new FormData(formElement));
     changeSubmitButton(false);
     hideForm();
+    openSuccessMessage();
+  } catch {
+    openErrorMessage();
+    changeSubmitButton(false);
   }
 };
 
