@@ -13,16 +13,12 @@ const filterGroup = {
   DISCUSSED: 'discussed',
 };
 
-const getRandomIndex = (max, min) => {
-  return Math.floor(Math.random()*(max-min));
-};
+const getRandomIndex = (max, min) => Math.floor(Math.random() * (max - min));
 
 const filterHandlers = {
-  [filterGroup.DEFAULT]: (data) => {
-    return data;
-  },
-  [filterGroup.RANDOM]: (data) => {},
-  [filterGroup.DISCUSSED]: (data) => {};
+  [filterGroup.DEFAULT]: (data) => data,
+  [filterGroup.RANDOM]: () => { },
+  [filterGroup.DISCUSSED]: () => { },
 };
 
 const onActiveButton = (event) => {
@@ -32,7 +28,7 @@ const onActiveButton = (event) => {
 
 const showFilter = () => {
   filter.classList.remove('img-filters--inactive');
-  DISCUSSEDButton.addEventListener('click', onActiveButton);
+  defaultButton.addEventListener('click', onActiveButton);
 };
 randomButton.addEventListener('click', onActiveButton);
 discussedButton.addEventListener('click', onActiveButton);

@@ -27,13 +27,9 @@ const request = async (url, method = HttpsMethod, body = null) => {
 
 //Функция получения данных
 
-const getData = async () => {
-  return request(BASE_URL + Route.GET_DATA, HttpsMethod.GET);
-};
+const getData = async () => request(BASE_URL + Route.GET_DATA, HttpsMethod.GET);
 
 //Функция отправки данных
-const sendData = async (photos) => {
-  return request(BASE_URL + Route.SEND_DATA, HttpsMethod.POST, photos);
-};
+const sendData = async (photos) => request(BASE_URL + Route.SEND_DATA, HttpsMethod.POST, photos);
 
 export { getData, sendData };
