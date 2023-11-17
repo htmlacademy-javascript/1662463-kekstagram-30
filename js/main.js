@@ -4,6 +4,7 @@ import { PHOTOS_COUNT } from './constans.js';
 import './form.js';
 import { getData } from './api.js';
 import { showErrormessage } from './messages.js';
+import { showFilter } from './filters.js';
 
 // const photos = getPhotos(PHOTOS_COUNT);
 // createThumbnails(photos);
@@ -12,12 +13,10 @@ const uploadData = async () => {
   try {
     const pictures = await getData();
     createThumbnails(pictures);
+    showFilter();
   } catch (error) {
     showErrormessage();
   }
 };
 
 uploadData();
-
-
-
