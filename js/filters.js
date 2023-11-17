@@ -5,10 +5,24 @@ const randomButton = filterForm.querySelector('#filter-random');
 const discussedButton = filterForm.querySelector('#filter-discussed');
 const currentButton = filterForm.querySelector('.img-filters__button--active');
 
+const MAX_RANDOM_FILTER = 10;
+
 const filterGroup = {
   DEFAULT: 'default',
   RANDOM: 'random',
   DISCUSSED: 'discussed',
+};
+
+const getRandomIndex = () => {
+  return Math.floor(Math.random()*(max-min));
+};
+
+const filterHandlers = {
+  [filterGroup.DEFAULT]: (data) => {
+    return data;
+  };
+  [filterGroup.RANDOM]: (data) => {};
+  [filterGroup.DISCUSSED]: (data) => {};
 };
 
 const onActiveButton = (event) => {
@@ -18,7 +32,7 @@ const onActiveButton = (event) => {
 
 const showFilter = () => {
   filter.classList.remove('img-filters--inactive');
-  defaultButton.addEventListener('click', onActiveButton);
+  DISCUSSEDButton.addEventListener('click', onActiveButton);
 };
 randomButton.addEventListener('click', onActiveButton);
 discussedButton.addEventListener('click', onActiveButton);
