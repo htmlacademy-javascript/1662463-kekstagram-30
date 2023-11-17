@@ -13,15 +13,15 @@ const filterGroup = {
   DISCUSSED: 'discussed',
 };
 
-const getRandomIndex = () => {
+const getRandomIndex = (max, min) => {
   return Math.floor(Math.random()*(max-min));
 };
 
 const filterHandlers = {
   [filterGroup.DEFAULT]: (data) => {
     return data;
-  };
-  [filterGroup.RANDOM]: (data) => {};
+  },
+  [filterGroup.RANDOM]: (data) => {},
   [filterGroup.DISCUSSED]: (data) => {};
 };
 
