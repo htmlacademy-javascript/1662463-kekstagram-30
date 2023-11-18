@@ -1,6 +1,6 @@
-import { getPhotos } from './data.js';
+// import { getPhotos } from './data.js';
 import { createThumbnails } from './thumbnails.js';
-import { PHOTOS_COUNT } from './constans.js';
+// import { PHOTOS_COUNT } from './constans.js';
 import './form.js';
 import { getData } from './api.js';
 import { showErrormessage } from './messages.js';
