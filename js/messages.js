@@ -23,6 +23,7 @@ const hideMessage = () => {
   const currentElement = document.querySelector('.success') || document.querySelector('.error');
   currentElement.remove();
   document.removeEventListener('keydown', onButtonEscKeydown);
+  document.body.removeEventListener('click', onBodyClick);
 };
 
 const onButtonEscKeydown = (evt) => {

@@ -66,8 +66,10 @@ const hasUniqueTags = (value) => {
   return lowerCaseTags.length === new Set(lowerCaseTags).size;
 };
 
+const isErrorMessageOpen = () => Boolean(document.querySelector('.error'));
+
 const onDocumentKeydown = (evt) => {
-  if (evt.key === 'Escape' && !isTextFieldFocused()) {
+  if (evt.key === 'Escape' && !isTextFieldFocused() && !isErrorMessageOpen()) {
     evt.preventDefault();
     hideForm();
   }
