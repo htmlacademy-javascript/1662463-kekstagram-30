@@ -1,6 +1,11 @@
 const dataErrorTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
 const HIDE_TIMEOUT_MESSAGE = 5000;
 
+const successMessage = document.querySelector('#success').content.querySelector('.success');
+const successButton = successMessage.querySelector('.success__button');
+const errorMessage = document.querySelector('#error').content.querySelector('.error');
+const errorButton = errorMessage.querySelector('.error__button');
+
 
 //Добавляем сообщение об ошибке
 const showErrormessage = () => {
@@ -14,17 +19,11 @@ const showErrormessage = () => {
 
 export { showErrormessage };
 
-const successMessage = document.querySelector('#success').content.querySelector('.success');
-const successButton = successMessage.querySelector('.success__button');
-const errorMessage = document.querySelector('#error').content.querySelector('.error');
-const errorButton = errorMessage.querySelector('.error__button');
-
 const hideMessage = () => {
   const currentElement = document.querySelector('.success') || document.querySelector('.error');
   currentElement.remove();
   document.removeEventListener('keydown', onButtonEscKeydown);
 };
-
 
 const onButtonEscKeydown = (evt) => {
   if (evt.key === 'Escape') {
@@ -37,7 +36,7 @@ const onCloseButton = () => {
   hideMessage();
 };
 
-const onButtonClick = (evt) => {
+const onBodyClick = (evt) => {
   if (evt.target.closest('.success__inner') || evt.target.closest('.error__inner')) {
     return;
   }
@@ -45,12 +44,12 @@ const onButtonClick = (evt) => {
   hideMessage();
 };
 
-const showMessage = (messageElement, buttonElement) => {
-  document.body.append(messageElement);
-  messageElement.append(buttonElement);
-  buttonElement.addEventListener('click', onCloseButton);
+const showMessage = (messageElement) => {
+  const message = messageElement.cloneNode(true);
+  message.querySelector('button').addEventListener('click', onCloseButton);
+  document.body.append(message);
   document.addEventListener('keydown', onButtonEscKeydown);
-  document.body.addEventListener('click', onButtonClick);
+  document.body.addEventListener('click', onBodyClick);
 };
 
 const openSuccessMessage = () => {
