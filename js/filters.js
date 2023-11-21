@@ -15,11 +15,11 @@ const getRandomIndex = (max, min) => Math.floor(Math.random() * (max - min));
 const filterHandlers = {
   [filterGroup.DEFAULT]: (data) => data,
   [filterGroup.RANDOM]: (data) => {
-    const max = Math.min(MAX_RANDOM_FILTER, data.length);
     const randomList = [];
+    const max = Math.min(MAX_RANDOM_FILTER, data.length);
     while (randomList.length < max) {
       const index = getRandomIndex(0, data.length);
-      if (!randomList.includes(index)) {
+      if (randomList.includes(index)) {
         randomList.push(index);
       }
     }
