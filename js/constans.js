@@ -41,7 +41,7 @@ export const MIN_SCALE = 25;
 export const MAX_SCALE = 100;
 export const DEFAULT_SCALE = 100;
 
-export const EFFECT = {
+export const Effect = {
   DEFAULT: 'none',
   CHROME: 'chrome',
   SEPIA: 'sepia',
@@ -51,61 +51,71 @@ export const EFFECT = {
 };
 
 export const EFFECT_TO_FILTER = {
-  [EFFECT.CHROME]: {
+  [Effect.CHROME]: {
     style: 'grayscale',
     unit: '',
   },
-  [EFFECT.SEPIA]: {
+  [Effect.SEPIA]: {
     style: 'sepia',
     unit: '',
   },
-  [EFFECT.MARVIN]: {
+  [Effect.MARVIN]: {
     style: 'invert',
     unit: '%',
   },
-  [EFFECT.PHOBOS]: {
+  [Effect.PHOBOS]: {
     style: 'blur',
     unit: 'px',
   },
-  [EFFECT.HEAT]: {
+  [Effect.HEAT]: {
     style: 'brightness',
     unit: '',
   },
-  [EFFECT.DEFAULT]: {
+  [Effect.DEFAULT]: {
     style: '',
     unit: '',
   },
 };
 
 export const EFFECT_TO_SLIDER_OPTIONS = {
-  [EFFECT.DEFAULT]: {
+  [Effect.DEFAULT]: {
     min: 0,
     max: 100,
     step: 1,
   },
-  [EFFECT.CHROME]: {
+  [Effect.CHROME]: {
     min: 0,
     max: 1,
     step: 0.1,
   },
-  [EFFECT.SEPIA]: {
+  [Effect.SEPIA]: {
     min: 0,
     max: 1,
     step: 0.1,
   },
-  [EFFECT.MARVIN]: {
+  [Effect.MARVIN]: {
     min: 0,
     max: 100,
     step: 1,
   },
-  [EFFECT.PHOBOS]: {
+  [Effect.PHOBOS]: {
     min: 0,
     max: 3,
     step: 0.1,
   },
-  [EFFECT.HEAT]: {
+  [Effect.HEAT]: {
     min: 1,
     max: 3,
     step: 0.1,
   },
 };
+
+export const MAX_RANDOM_FILTER = 10;
+
+export const filterGroup = {
+  DEFAULT: 'default',
+  RANDOM: 'random',
+  DISCUSSED: 'discussed',
+};
+
+export const FILE_TYPES = ['jpg', 'svg', 'jpeg'];

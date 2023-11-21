@@ -3,6 +3,8 @@ import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
 import { sendData } from './api.js';
 import { openErrorMessage, openSuccessMessage } from './messages.js';
+import { isValidType } from './validator.js';
+
 
 const imgForm = document.querySelector('.img-upload__form');
 const overlay = imgForm.querySelector('.img-upload__overlay');
@@ -11,6 +13,8 @@ const fileField = imgForm.querySelector('.img-upload__input');
 const hashTagField = imgForm.querySelector('.text__hashtags');
 const commentField = imgForm.querySelector('.text__description');
 const submitButton = imgForm.querySelector('.img-upload__submit');
+const photoPreview = document.querySelector('.img-upload__preview-picture');
+const effectsPreview = document.querySelector('.effects__preview');
 
 const submitButtonText = {
   POSTING: 'Публикую',
@@ -117,18 +121,6 @@ const onImgFormSubmit = (evt) => {
   pristine.validate();
   sendForm(evt.target);
 };
-// if (pristine.validate()) {
-//   const formData = new FormData(evt.target);
-
-// fetch('https://30.javascript.pages.academy/kekstagram/',
-//   {
-//     method: 'POST',
-//     body: formData,
-//   }
-// );
-
-
-// };
 
 //validate hashTags
 
@@ -163,3 +155,20 @@ cancelButton.addEventListener('click', onCancelButtonClick);
 imgForm.addEventListener('submit', onImgFormSubmit);
 
 
+//Функция загрузки фотографии
+
+const onFileUploadInput = () => {
+  fileField.addEventListener('change', () => {
+    const file = fileField.files[0];
+
+    if (file && !isValidType(file)) {
+      photoPreview.src = URL.createObjectURL(file);
+      effectsPreview.forEach((preview) => {
+        preview.style.backgroundImage = `url('${photoPreview.src}')`;
+      });
+    }
+    showForm();
+  });
+};
+
+export { onFileUploadInput };

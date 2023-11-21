@@ -1,4 +1,4 @@
-import { EFFECT, EFFECT_TO_FILTER, EFFECT_TO_SLIDER_OPTIONS } from './constans.js';
+import { Effect, EFFECT_TO_FILTER, EFFECT_TO_SLIDER_OPTIONS } from './constans.js';
 
 const imgUploader = document.querySelector('.img-upload');
 const imgPreview = imgUploader.querySelector('.img-upload__preview img');
@@ -8,7 +8,7 @@ const effectLevel = imgUploader.querySelector('.effect-level__value');
 const effectsContainerElement = imgUploader.querySelector('.effects__list');
 const defaultRadio = imgUploader.querySelector('#effect-none');
 
-const isDefault = (chosenEffect) => chosenEffect === EFFECT.DEFAULT;
+const isDefault = (chosenEffect) => chosenEffect === Effect.DEFAULT;
 
 const renderEffect = ({ style, unit }) => {
   imgPreview.style.filter = `${style}(${effectLevel.value}${unit})`;
