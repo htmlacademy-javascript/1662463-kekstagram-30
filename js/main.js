@@ -14,7 +14,7 @@ const uploadData = async () => {
   try {
     const pictures = await getData();
     createThumbnails(pictures);
-    showFilter();
+    showFilter(pictures);
   } catch (error) {
     showErrormessage();
   }

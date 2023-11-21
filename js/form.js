@@ -3,7 +3,6 @@ import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
 import { sendData } from './api.js';
 import { openErrorMessage, openSuccessMessage } from './messages.js';
-import { isValidType } from './validator.js';
 
 
 const imgForm = document.querySelector('.img-upload__form');
@@ -14,7 +13,7 @@ const hashTagField = imgForm.querySelector('.text__hashtags');
 const commentField = imgForm.querySelector('.text__description');
 const submitButton = imgForm.querySelector('.img-upload__submit');
 const photoPreview = document.querySelector('.img-upload__preview-picture');
-const effectsPreview = document.querySelector('.effects__preview');
+const effectsPreview = document.querySelectorAll('.effects__preview');
 
 const submitButtonText = {
   POSTING: 'Публикую',
@@ -160,13 +159,10 @@ imgForm.addEventListener('submit', onImgFormSubmit);
 const onFileUploadInput = () => {
   fileField.addEventListener('change', () => {
     const file = fileField.files[0];
-
-    if (file && !isValidType(file)) {
-      photoPreview.src = URL.createObjectURL(file);
-      effectsPreview.forEach((preview) => {
-        preview.style.backgroundImage = `url('${photoPreview.src}')`;
-      });
-    }
+    photoPreview.src = URL.createObjectURL(file);
+    effectsPreview.forEach((preview) => {
+      preview.style.backgroundImage = `url('${photoPreview.src}')`;
+    });
     showForm();
   });
 };

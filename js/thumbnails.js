@@ -8,7 +8,12 @@ const pictureTemplate = document
 
 const picturesFragment = document.createDocumentFragment();
 
-const createThumbnails = (getPictures) => {
+const clear = () => {
+  const pictures = document.querySelectorAll('.picture');
+  pictures.forEach((element) => element.remove());
+};
+
+const renderThumbnails = (getPictures) => {
   getPictures.forEach(({ url, description, comments, likes, id }) => {
     const pictureElement = pictureTemplate.cloneNode(true);
     pictureElement.querySelector('.picture__img').src = url;
@@ -21,6 +26,10 @@ const createThumbnails = (getPictures) => {
 
   picturesContainer.appendChild(picturesFragment);
   renderGallery(getPictures);
+};
+const createThumbnails = (getPictures) => {
+  clear();
+  renderThumbnails(getPictures);
 };
 
 export { createThumbnails };
