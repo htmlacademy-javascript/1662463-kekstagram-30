@@ -90,6 +90,5 @@ const onModalEscKeydown = (evt) => {
   }
 };
 
-
 export { showModal };
 

@@ -5,22 +5,18 @@ const commentField = imgForm.querySelector('.text__description');
 const hashTagField = imgForm.querySelector('.text__hashtags');
 
 const pristine = new Pristine(imgForm, {
-  // class of the parent element where the error/success class is added
   classTo: 'img-upload__field-wrapper',
-  // class of the parent element where error text element is appended
   errorTextParent: 'img-upload__field-wrapper',
-  // class of the error text element
   errorTextClass: 'img-upload__field-wrapper--error',
 });
 
-// Фокус в поле ввода
 const isTextFieldFocused = () =>
   document.activeElement === hashTagField ||
   document.activeElement === commentField;
 
 const normilizeTags = (tagString) => tagString
-  .trim() //удаляет пробелы в начале и конце строки
-  .split(' ') //разделение строки
+  .trim()
+  .split(' ')
   .filter((tag) => Boolean(tag.length));
 
 const hasValidTags = (value) => normilizeTags(value).every((tag) => VALID_SYMBOLS.test(tag));
@@ -32,13 +28,11 @@ const hasUniqueTags = (value) => {
   return lowerCaseTags.length === new Set(lowerCaseTags).size;
 };
 
-//validate hashTags
-
 pristine.addValidator(
   hashTagField,
   hasValidCount,
   ERROR_TEXT.INVALID_COUNT,
-  3, //порядок определения
+  3,
   true
 );
 

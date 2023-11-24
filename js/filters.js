@@ -29,8 +29,6 @@ const renderActiveButton = (evt) => {
   evt.target.classList.add('img-filters__button--active');
 };
 
-//функция отрисовки отфильтрованных данных
-
 const remake = (e, filterElement, data) => {
   const filteredData = filterHandlers[filterElement](data);
   createThumbnails(filteredData);

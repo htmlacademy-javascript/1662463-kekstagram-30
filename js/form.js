@@ -4,7 +4,6 @@ import { resetEffects } from './effects.js';
 import { sendData } from './api.js';
 import { openErrorMessage, openSuccessMessage } from './messages.js';
 
-
 const imgForm = document.querySelector('.img-upload__form');
 const overlay = imgForm.querySelector('.img-upload__overlay');
 const cancelButton = imgForm.querySelector('.img-upload__cancel');
@@ -18,8 +17,6 @@ const submitButtonText = {
   IDLE: 'Опубликовать',
 };
 
-
-//open form
 const showForm = () => {
   overlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
@@ -27,7 +24,6 @@ const showForm = () => {
   resetEffects();
 };
 
-//close form
 const hideForm = () => {
   imgForm.reset();
   resetScale();
@@ -54,8 +50,6 @@ const onFileInputChange = () => {
   showForm();
 };
 
-// Функция переключения кнопки отправки формы
-
 const changeSubmitButton = (isBlocked) => {
   submitButton.disabled = isBlocked;
   if (isBlocked) {
@@ -64,8 +58,6 @@ const changeSubmitButton = (isBlocked) => {
     submitButton.textContent = submitButtonText.IDLE;
   }
 };
-
-// Функция отправки формы
 
 const sendForm = async (formElement) => {
   if (!isValid()) {
@@ -89,13 +81,9 @@ const onImgFormSubmit = (evt) => {
   sendForm(evt.target);
 };
 
-// Events
-
 fileField.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener('click', onCancelButtonClick);
 imgForm.addEventListener('submit', onImgFormSubmit);
-
-//Функция загрузки фотографии
 
 const onFileUploadInput = () => {
   fileField.addEventListener('change', () => {

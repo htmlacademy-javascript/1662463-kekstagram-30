@@ -14,7 +14,6 @@ const renderEffect = ({ style, unit }) => {
   imgPreview.style.filter = `${style}(${effectLevel.value}${unit})`;
 };
 
-// Создаём слайдер
 const createSlider = ({ min, max, step }) => {
   noUiSlider.create(slider, {
     range: { min, max },
@@ -27,12 +26,11 @@ const createSlider = ({ min, max, step }) => {
     }
   });
   slider.noUiSlider.on('update', () => {
-    effectLevel.value = slider.noUiSlider.get(); //актуальное значение слайдера
+    effectLevel.value = slider.noUiSlider.get();
     renderEffect(EFFECT_TO_FILTER[document.querySelector('.effects__radio:checked').value]);
   });
 };
 
-// Обновление слайдера
 const updateSlider = ({ min, max, step }) => {
   slider.noUiSlider.updateOptions({
     range: { min, max },
@@ -79,5 +77,5 @@ effectsContainerElement.addEventListener('change', (evt) => {
   }
 });
 
-export {resetEffects};
+export { resetEffects };
 
