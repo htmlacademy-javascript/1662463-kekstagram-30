@@ -21,24 +21,23 @@ const hideMessage = () => {
   document.body.removeEventListener('click', onBodyClick);
 };
 
-const onButtonEscKeydown = (evt) => {
+function onButtonEscKeydown (evt) {
   if (evt.key === 'Escape') {
     evt.preventDefault();
     hideMessage();
   }
-};
+}
 
 const onCloseButton = () => {
   hideMessage();
 };
 
-const onBodyClick = (evt) => {
+function onBodyClick (evt) {
   if (evt.target.closest('.success__inner') || evt.target.closest('.error__inner')) {
     return;
   }
-
   hideMessage();
-};
+}
 
 const showMessage = (messageElement) => {
   const message = messageElement.cloneNode(true);

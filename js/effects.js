@@ -42,7 +42,7 @@ const updateSlider = ({ min, max, step }) => {
 createSlider({ min: 0, max: 100, step: 1 });
 
 const resetImage = () => {
-  imgPreview.style = '';
+  imgPreview.style.filter = '';
 };
 
 const showSlider = () => {

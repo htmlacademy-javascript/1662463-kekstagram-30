@@ -16,11 +16,9 @@ picturesContainer.addEventListener('click', (evt) => {
     return;
   }
   evt.preventDefault();
-
   const thumbnailId = + thumbnail.dataset.thumbnailId;
   const photoData = photosArray.find(({ id }) => id === thumbnailId);
   showModal(photoData);
 });
-
 
 export { renderGallery };

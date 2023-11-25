@@ -3,6 +3,7 @@ import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
 import { sendData } from './api.js';
 import { openErrorMessage, openSuccessMessage } from './messages.js';
+import { submitButtonText } from './constans.js';
 
 const imgForm = document.querySelector('.img-upload__form');
 const overlay = imgForm.querySelector('.img-upload__overlay');
@@ -11,11 +12,6 @@ const fileField = imgForm.querySelector('.img-upload__input');
 const submitButton = imgForm.querySelector('.img-upload__submit');
 const photoPreview = document.querySelector('.img-upload__preview-picture');
 const effectsPreview = document.querySelectorAll('.effects__preview');
-
-const submitButtonText = {
-  POSTING: 'Публикую',
-  IDLE: 'Опубликовать',
-};
 
 const showForm = () => {
   overlay.classList.remove('hidden');
@@ -35,12 +31,12 @@ const hideForm = () => {
 
 const isErrorMessageOpen = () => Boolean(document.querySelector('.error'));
 
-const onDocumentKeydown = (evt) => {
+function onDocumentKeydown(evt) {
   if (evt.key === 'Escape' && !isTextFieldFocused() && !isErrorMessageOpen()) {
     evt.preventDefault();
     hideForm();
   }
-};
+}
 
 const onCancelButtonClick = () => {
   hideForm();

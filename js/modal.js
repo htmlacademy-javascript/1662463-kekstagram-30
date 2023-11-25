@@ -1,13 +1,10 @@
 import { COMMENTS_SHOWN } from './constans.js';
 
-
 const modal = document.querySelector('.big-picture');
 const closeModalButton = modal.querySelector('.big-picture__cancel');
-
 const commentElement = document
   .querySelector('#comment')
   .content.querySelector('.social__comment');
-
 const commentsList = modal.querySelector('.social__comments');
 const commentCount = modal.querySelector('.social__comment-shown-count');
 const totalCommentCount = modal.querySelector('.social__comment-total-count');
@@ -83,12 +80,12 @@ closeModalButton.addEventListener('click', () => {
   hideModal();
 });
 
-const onModalEscKeydown = (evt) => {
+function onModalEscKeydown (evt) {
   if (evt.key === 'Escape') {
     evt.preventDefault();
     hideModal();
   }
-};
+}
 
 export { showModal };
 

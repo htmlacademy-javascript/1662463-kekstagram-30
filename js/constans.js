@@ -8,6 +8,11 @@ export const ERROR_TEXT = {
   INVALID_PATTERN: 'Неправильный хэштег',
 };
 
+export const submitButtonText = {
+  POSTING: 'Публикую',
+  IDLE: 'Опубликовать',
+};
+
 export const HIDE_TIMEOUT_MESSAGE = 5000;
 
 export const SCALE_STEP = 25;

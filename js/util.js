@@ -14,6 +14,4 @@ const debounce = (callback, timeoutDelay = 500) => {
   };
 };
 
-export { debounce };
-
-export { getRandomInteger };
+export { getRandomInteger, debounce };
