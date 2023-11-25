@@ -29,26 +29,26 @@ const renderActiveButton = (evt) => {
   evt.target.classList.add('img-filters__button--active');
 };
 
-//функция отрисовки отфильтрованных данных
-
-const remake = (e, filterElement, data) => {
+const remake = (filterElement, data) => {
   const filteredData = filterHandlers[filterElement](data);
   createThumbnails(filteredData);
-  renderActiveButton(e);
 };
 
 const debouncedRemake = debounce(remake);
 
 const showFilter = (data) => {
   filter.classList.remove('img-filters--inactive');
-  defaultButton.addEventListener('click', (event) => {
-    debouncedRemake(event, filterGroup.DEFAULT, data);
+  defaultButton.addEventListener('click', (evt) => {
+    renderActiveButton(evt);
+    debouncedRemake(filterGroup.DEFAULT, data);
   });
-  randomButton.addEventListener('click', (event) => {
-    debouncedRemake(event, filterGroup.RANDOM, data);
+  randomButton.addEventListener('click', (evt) => {
+    renderActiveButton(evt);
+    debouncedRemake(filterGroup.RANDOM, data);
   });
-  discussedButton.addEventListener('click', (event) => {
-    debouncedRemake(event, filterGroup.DISCUSSED, data);
+  discussedButton.addEventListener('click', (evt) => {
+    renderActiveButton(evt);
+    debouncedRemake(filterGroup.DISCUSSED, data);
   });
 };
 

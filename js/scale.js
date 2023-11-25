@@ -8,7 +8,7 @@ const scaleInput = imgUploader.querySelector('.scale__control--value');
 
 const scaleImage = (value) => {
   imgPreview.style.transform = `scale(${value / 100})`;
-  scaleInput.value = `${value}`;
+  scaleInput.value = `${value}%`;
 };
 
 const onSmallerButtonClick = () => {

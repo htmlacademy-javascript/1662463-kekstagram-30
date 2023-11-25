@@ -1,7 +1,6 @@
 import { renderGallery } from './gallery.js';
 
 const picturesContainer = document.querySelector('.pictures');
-
 const pictureTemplate = document
   .querySelector('#picture')
   .content.querySelector('a');
