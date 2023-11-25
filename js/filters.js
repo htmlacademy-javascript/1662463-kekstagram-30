@@ -40,15 +40,15 @@ const showFilter = (data) => {
   filter.classList.remove('img-filters--inactive');
   defaultButton.addEventListener('click', (evt) => {
     renderActiveButton(evt);
-    debouncedRemake(evt, filterGroup.DEFAULT, data);
+    debouncedRemake(filterGroup.DEFAULT, data);
   });
   randomButton.addEventListener('click', (evt) => {
     renderActiveButton(evt);
-    debouncedRemake(evt, filterGroup.RANDOM, data);
+    debouncedRemake(filterGroup.RANDOM, data);
   });
   discussedButton.addEventListener('click', (evt) => {
     renderActiveButton(evt);
-    debouncedRemake(evt, filterGroup.DISCUSSED, data);
+    debouncedRemake(filterGroup.DISCUSSED, data);
   });
 };
 
