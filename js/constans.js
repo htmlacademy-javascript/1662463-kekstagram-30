@@ -97,4 +97,3 @@ export const filterGroup = {
   DISCUSSED: 'discussed',
 };
 
-export const FILE_TYPES = ['jpg', 'svg', 'jpeg'];

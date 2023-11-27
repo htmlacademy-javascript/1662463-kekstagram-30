@@ -1,18 +1,18 @@
 import { MAX_HASHTAGS_COUNT, VALID_SYMBOLS, ERROR_TEXT } from './constans.js';
 
-const imgForm = document.querySelector('.img-upload__form');
-const commentField = imgForm.querySelector('.text__description');
-const hashTagField = imgForm.querySelector('.text__hashtags');
+const imgFormElement = document.querySelector('.img-upload__form');
+const commentFieldElement = imgFormElement.querySelector('.text__description');
+const hashTagFieldElement = imgFormElement.querySelector('.text__hashtags');
 
-const pristine = new Pristine(imgForm, {
+const pristine = new Pristine(imgFormElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper--error',
 });
 
 const isTextFieldFocused = () =>
-  document.activeElement === hashTagField ||
-  document.activeElement === commentField;
+  document.activeElement === hashTagFieldElement ||
+  document.activeElement === commentFieldElement;
 
 const normilizeTags = (tagString) => tagString
   .trim()
@@ -29,7 +29,7 @@ const hasUniqueTags = (value) => {
 };
 
 pristine.addValidator(
-  hashTagField,
+  hashTagFieldElement,
   hasValidCount,
   ERROR_TEXT.INVALID_COUNT,
   3,
@@ -37,7 +37,7 @@ pristine.addValidator(
 );
 
 pristine.addValidator(
-  hashTagField,
+  hashTagFieldElement,
   hasUniqueTags,
   ERROR_TEXT.NOT_UNIQUE,
   2,
@@ -45,7 +45,7 @@ pristine.addValidator(
 );
 
 pristine.addValidator(
-  hashTagField,
+  hashTagFieldElement,
   hasValidTags,
   ERROR_TEXT.INVALID_PATTERN,
   1,

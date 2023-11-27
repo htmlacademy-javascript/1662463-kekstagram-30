@@ -1,21 +1,21 @@
 import { Effect, EFFECT_TO_FILTER, EFFECT_TO_SLIDER_OPTIONS } from './constans.js';
 
-const imgUploader = document.querySelector('.img-upload');
-const imgPreview = imgUploader.querySelector('.img-upload__preview img');
-const slider = imgUploader.querySelector('.effect-level__slider');
-const sliderWrapper = imgUploader.querySelector('.img-upload__effect-level');
-const effectLevel = imgUploader.querySelector('.effect-level__value');
-const effectsContainerElement = imgUploader.querySelector('.effects__list');
-const defaultRadio = imgUploader.querySelector('#effect-none');
+const imgUploaderElement = document.querySelector('.img-upload');
+const imgPreviewElement = imgUploaderElement.querySelector('.img-upload__preview img');
+const sliderElement = imgUploaderElement.querySelector('.effect-level__slider');
+const sliderWrapperElement = imgUploaderElement.querySelector('.img-upload__effect-level');
+const effectLevelElement = imgUploaderElement.querySelector('.effect-level__value');
+const effectsContainerElement = imgUploaderElement.querySelector('.effects__list');
+const defaultRadioElement = imgUploaderElement.querySelector('#effect-none');
 
 const isDefault = (chosenEffect) => chosenEffect === Effect.DEFAULT;
 
 const renderEffect = ({ style, unit }) => {
-  imgPreview.style.filter = `${style}(${effectLevel.value}${unit})`;
+  imgPreviewElement.style.filter = `${style}(${effectLevelElement.value}${unit})`;
 };
 
 const createSlider = ({ min, max, step }) => {
-  noUiSlider.create(slider, {
+  noUiSlider.create(sliderElement, {
     range: { min, max },
     step,
     start: max,
@@ -25,14 +25,14 @@ const createSlider = ({ min, max, step }) => {
       from: (value) => Number(value),
     }
   });
-  slider.noUiSlider.on('update', () => {
-    effectLevel.value = slider.noUiSlider.get();
+  sliderElement.noUiSlider.on('update', () => {
+    effectLevelElement.value = sliderElement.noUiSlider.get();
     renderEffect(EFFECT_TO_FILTER[document.querySelector('.effects__radio:checked').value]);
   });
 };
 
 const updateSlider = ({ min, max, step }) => {
-  slider.noUiSlider.updateOptions({
+  sliderElement.noUiSlider.updateOptions({
     range: { min, max },
     step,
     start: max,
@@ -42,15 +42,15 @@ const updateSlider = ({ min, max, step }) => {
 createSlider({ min: 0, max: 100, step: 1 });
 
 const resetImage = () => {
-  imgPreview.style.filter = '';
+  imgPreviewElement.style.filter = '';
 };
 
 const showSlider = () => {
-  sliderWrapper.classList.remove('hidden');
+  sliderWrapperElement.classList.remove('hidden');
 };
 
 const hideSlider = () => {
-  sliderWrapper.classList.add('hidden');
+  sliderWrapperElement.classList.add('hidden');
 };
 
 const setDefaultEffect = () => {
@@ -59,7 +59,7 @@ const setDefaultEffect = () => {
 };
 
 const checkDefaultRadio = () => {
-  defaultRadio.checked = true;
+  defaultRadioElement.checked = true;
 };
 
 const resetEffects = () => {

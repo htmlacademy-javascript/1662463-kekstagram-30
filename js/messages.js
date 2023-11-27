@@ -1,4 +1,5 @@
 import { HIDE_TIMEOUT_MESSAGE } from './constans.js';
+import { isEscape } from './util.js';
 
 const dataErrorTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
 const successMessage = document.querySelector('#success').content.querySelector('.success');
@@ -22,7 +23,7 @@ const hideMessage = () => {
 };
 
 function onButtonEscKeydown (evt) {
-  if (evt.key === 'Escape') {
+  if (isEscape) {
     evt.preventDefault();
     hideMessage();
   }

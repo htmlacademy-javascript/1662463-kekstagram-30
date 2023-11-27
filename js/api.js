@@ -17,7 +17,7 @@ const ErrorText = {
 
 const request = async (url, method = HttpsMethod, body = null) => {
   const response = await fetch(url, { method, body });
-  if (! response.ok) {
+  if (!response.ok) {
     throw new Error(ErrorText[method]);
   }
 
