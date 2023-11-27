@@ -2,11 +2,11 @@ import { createThumbnails } from './thumbnails.js';
 import { MAX_RANDOM_FILTER, filterGroup } from './constans.js';
 import { debounce, getRandomInteger } from './util.js';
 
-const filter = document.querySelector('.img-filters');
-const filterForm = document.querySelector('.img-filters__form');
-const defaultButton = filterForm.querySelector('#filter-default');
-const randomButton = filterForm.querySelector('#filter-random');
-const discussedButton = filterForm.querySelector('#filter-discussed');
+const filterElement = document.querySelector('.img-filters');
+const filterFormElement = filterElement.querySelector('.img-filters__form');
+const defaultButtonElement = filterElement.querySelector('#filter-default');
+const randomButtonElement = filterElement.querySelector('#filter-random');
+const discussedButtonElement = filterElement.querySelector('#filter-discussed');
 
 const filterHandlers = {
   [filterGroup.DEFAULT]: (data) => data,
@@ -25,28 +25,28 @@ const filterHandlers = {
 };
 
 const renderActiveButton = (evt) => {
-  filterForm.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
+  filterFormElement.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
   evt.target.classList.add('img-filters__button--active');
 };
 
-const remake = (filterElement, data) => {
-  const filteredData = filterHandlers[filterElement](data);
+const remake = (filterItem, data) => {
+  const filteredData = filterHandlers[filterItem](data);
   createThumbnails(filteredData);
 };
 
 const debouncedRemake = debounce(remake);
 
 const showFilter = (data) => {
-  filter.classList.remove('img-filters--inactive');
-  defaultButton.addEventListener('click', (evt) => {
+  filterElement.classList.remove('img-filters--inactive');
+  defaultButtonElement.addEventListener('click', (evt) => {
     renderActiveButton(evt);
     debouncedRemake(filterGroup.DEFAULT, data);
   });
-  randomButton.addEventListener('click', (evt) => {
+  randomButtonElement.addEventListener('click', (evt) => {
     renderActiveButton(evt);
     debouncedRemake(filterGroup.RANDOM, data);
   });
-  discussedButton.addEventListener('click', (evt) => {
+  discussedButtonElement.addEventListener('click', (evt) => {
     renderActiveButton(evt);
     debouncedRemake(filterGroup.DISCUSSED, data);
   });

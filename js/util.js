@@ -14,4 +14,6 @@ const debounce = (callback, timeoutDelay = 500) => {
   };
 };
 
-export { getRandomInteger, debounce };
+const isEscape = (evt) => evt.key === 'Escape';
+
+export { getRandomInteger, debounce, isEscape};

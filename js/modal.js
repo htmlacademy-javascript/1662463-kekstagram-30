@@ -1,14 +1,15 @@
 import { COMMENTS_SHOWN } from './constans.js';
+import { isEscape } from './util.js';
 
-const modal = document.querySelector('.big-picture');
-const closeModalButton = modal.querySelector('.big-picture__cancel');
+const modalElement = document.querySelector('.big-picture');
+const closeModalButtonElement = modalElement.querySelector('.big-picture__cancel');
 const commentElement = document
   .querySelector('#comment')
   .content.querySelector('.social__comment');
-const commentsList = modal.querySelector('.social__comments');
-const commentCount = modal.querySelector('.social__comment-shown-count');
-const totalCommentCount = modal.querySelector('.social__comment-total-count');
-const commentsLoader = modal.querySelector('.comments-loader');
+const commentsListElement = modalElement.querySelector('.social__comments');
+const commentCountElement = modalElement.querySelector('.social__comment-shown-count');
+const totalCommentCount = modalElement.querySelector('.social__comment-total-count');
+const commentsLoaderElement = modalElement.querySelector('.comments-loader');
 
 let commentsCountShown = 0;
 let commentsArray = [];
@@ -27,10 +28,10 @@ const renderComments = () => {
   commentsCountShown += COMMENTS_SHOWN;
 
   if (commentsCountShown >= commentsArray.length) {
-    commentsLoader.classList.add('hidden');
+    commentsLoaderElement.classList.add('hidden');
     commentsCountShown = commentsArray.length;
   } else {
-    commentsLoader.classList.remove('hidden');
+    commentsLoaderElement.classList.remove('hidden');
   }
 
   const commentsFragment = document.createDocumentFragment();
@@ -39,25 +40,25 @@ const renderComments = () => {
     commentsFragment.append(comment);
   }
 
-  commentsList.innerHTML = '';
-  commentsList.append(commentsFragment);
+  commentsListElement.innerHTML = '';
+  commentsListElement.append(commentsFragment);
 
-  commentCount.textContent = commentsCountShown;
+  commentCountElement.textContent = commentsCountShown;
   totalCommentCount.textContent = commentsArray.length;
 };
 
 const onCommentsLoaderClick = () => renderComments();
-commentsLoader.addEventListener('click', onCommentsLoaderClick);
+commentsLoaderElement.addEventListener('click', onCommentsLoaderClick);
 
 const renderPicture = ({ url, description, likes }) => {
-  modal.querySelector('.big-picture__img img').src = url;
-  modal.querySelector('.big-picture__img img').alt = description;
-  modal.querySelector('.likes-count').textContent = likes;
-  modal.querySelector('.social__caption').textContent = description;
+  modalElement.querySelector('.big-picture__img img').src = url;
+  modalElement.querySelector('.big-picture__img img').alt = description;
+  modalElement.querySelector('.likes-count').textContent = likes;
+  modalElement.querySelector('.social__caption').textContent = description;
 };
 
 const showModal = (photoData) => {
-  modal.classList.remove('hidden');
+  modalElement.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onModalEscKeydown);
 
@@ -71,17 +72,17 @@ const showModal = (photoData) => {
 
 const hideModal = () => {
   commentsCountShown = 0;
-  modal.classList.add('hidden');
+  modalElement.classList.add('hidden');
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onModalEscKeydown);
 };
 
-closeModalButton.addEventListener('click', () => {
+closeModalButtonElement.addEventListener('click', () => {
   hideModal();
 });
 
 function onModalEscKeydown (evt) {
-  if (evt.key === 'Escape') {
+  if (isEscape) {
     evt.preventDefault();
     hideModal();
   }
