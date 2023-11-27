@@ -59,7 +59,7 @@ export const EFFECT_TO_FILTER = {
 export const EFFECT_TO_SLIDER_OPTIONS = {
   [Effect.DEFAULT]: {
     min: 0,
-    max: 100,
+    max: 0,
     step: 1,
   },
   [Effect.CHROME]: {

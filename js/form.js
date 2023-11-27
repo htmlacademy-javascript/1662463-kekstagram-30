@@ -11,8 +11,8 @@ const overlayElement = imgFormElement.querySelector('.img-upload__overlay');
 const cancelButtonElement = imgFormElement.querySelector('.img-upload__cancel');
 const fileFieldElement = imgFormElement.querySelector('.img-upload__input');
 const submitButtonElement = imgFormElement.querySelector('.img-upload__submit');
-const photoPreviewElement = imgFormElement.querySelector('.img-upload__preview-picture');
-const effectsPreviewElement = imgFormElement.querySelectorAll('.effects__preview');
+const photoPreviewElement = document.querySelector('.img-upload__preview-picture');
+const effectsPreviewElement = document.querySelectorAll('.effects__preview');
 
 const showForm = () => {
   overlayElement.classList.remove('hidden');
@@ -32,14 +32,7 @@ const hideForm = () => {
 
 const isErrorMessageOpen = () => Boolean(document.querySelector('.error'));
 
-function onDocumentKeydown(evt) {
-  if (isEscape && !isTextFieldFocused() && !isErrorMessageOpen()) {
-    evt.preventDefault();
-    hideForm();
-  }
-}
-
-const onCancelButtonElementClick = () => {
+const onCancelButtonClick = () => {
   hideForm();
 };
 
@@ -49,11 +42,7 @@ const onFileInputChange = () => {
 
 const changeSubmitButton = (isBlocked) => {
   submitButtonElement.disabled = isBlocked;
-  if (isBlocked) {
-    submitButtonElement.textContent = submitButtonText.POSTING;
-  } else {
-    submitButtonElement.textContent = submitButtonText.IDLE;
-  }
+  submitButtonElement.textContent = isBlocked ? submitButtonText.POSTING : submitButtonText.IDLE;
 };
 
 const sendForm = async (formElement) => {
@@ -72,15 +61,14 @@ const sendForm = async (formElement) => {
   }
 };
 
-const onImgFormElementSubmit = (evt) => {
+const onImgFormSubmit = (evt) => {
   evt.preventDefault();
-  isValid();
   sendForm(evt.target);
 };
 
 fileFieldElement.addEventListener('change', onFileInputChange);
-cancelButtonElement.addEventListener('click', onCancelButtonElementClick);
-imgFormElement.addEventListener('submit', onImgFormElementSubmit);
+cancelButtonElement.addEventListener('click', onCancelButtonClick);
+imgFormElement.addEventListener('submit', onImgFormSubmit);
 
 const onFileUploadInput = () => {
   fileFieldElement.addEventListener('change', () => {
@@ -92,5 +80,12 @@ const onFileUploadInput = () => {
     showForm();
   });
 };
+
+function onDocumentKeydown(evt) {
+  if (isEscape(evt) && !isTextFieldFocused() && !isErrorMessageOpen()) {
+    evt.preventDefault();
+    hideForm();
+  }
+}
 
 export { onFileUploadInput };

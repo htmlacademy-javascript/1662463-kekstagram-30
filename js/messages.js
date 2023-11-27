@@ -2,10 +2,10 @@ import { HIDE_TIMEOUT_MESSAGE } from './constans.js';
 import { isEscape } from './util.js';
 
 const dataErrorTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
-const successMessage = document.querySelector('#success').content.querySelector('.success');
-const successButton = successMessage.querySelector('.success__button');
-const errorMessage = document.querySelector('#error').content.querySelector('.error');
-const errorButton = errorMessage.querySelector('.error__button');
+const successMessageTemplate = document.querySelector('#success').content.querySelector('.success');
+const errorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
+const successButtonElement = successMessageTemplate.querySelector('.success__button');
+const errorButtonElement = errorMessageTemplate.querySelector('.error__button');
 
 const showErrormessage = () => {
   const errorElement = dataErrorTemplate.cloneNode(true);
@@ -23,7 +23,7 @@ const hideMessage = () => {
 };
 
 function onButtonEscKeydown (evt) {
-  if (isEscape) {
+  if (isEscape(evt)) {
     evt.preventDefault();
     hideMessage();
   }
@@ -49,11 +49,11 @@ const showMessage = (messageElement) => {
 };
 
 const openSuccessMessage = () => {
-  showMessage(successMessage, successButton);
+  showMessage(successMessageTemplate, successButtonElement);
 };
 
 const openErrorMessage = () => {
-  showMessage(errorMessage, errorButton);
+  showMessage(errorMessageTemplate, errorButtonElement);
 };
 
 export { showErrormessage, openSuccessMessage, openErrorMessage };

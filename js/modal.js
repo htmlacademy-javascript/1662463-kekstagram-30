@@ -82,7 +82,7 @@ closeModalButtonElement.addEventListener('click', () => {
 });
 
 function onModalEscKeydown (evt) {
-  if (isEscape) {
+  if (isEscape(evt)) {
     evt.preventDefault();
     hideModal();
   }
