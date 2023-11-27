@@ -1,6 +1,6 @@
 import { renderGallery } from './gallery.js';
 
-const picturesContainer = document.querySelector('.pictures');
+const picturesContainerElement = document.querySelector('.pictures');
 const pictureTemplate = document
   .querySelector('#picture')
   .content.querySelector('a');
@@ -23,7 +23,7 @@ const renderThumbnails = (getPictures) => {
     picturesFragment.appendChild(pictureElement);
   });
 
-  picturesContainer.appendChild(picturesFragment);
+  picturesContainerElement.appendChild(picturesFragment);
   renderGallery(getPictures);
 };
 const createThumbnails = (getPictures) => {
